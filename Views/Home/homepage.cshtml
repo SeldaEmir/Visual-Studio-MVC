@@ -1,0 +1,65 @@
+﻿@using aspnet_mvc_ef_codefirst.ViewModels.Home
+@model HomePageViewModel
+
+@{
+    ViewBag.Title = "homepage";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>homepage</h2>
+            </hr>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                @Html.ActionLink("Yeni Kisi", "Yeni","Kisi",null, new { @class="btn btn-primary" } )
+                </br></br>
+            </div>
+
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    Kisiler
+                </li>
+                @foreach (var kisi in Model.Kisiler)
+                {
+                <li class="list-group-item">
+                    @Html.ActionLink("Düzenle", "Duzenle", "Kisi", new { kisiid = kisi.ID }, new { @class = "btn btn-warning btn-xs" })
+                    @Html.ActionLink("Sil", "Sil", "Kisi", new { kisiid = kisi.ID }, new { @class = "btn btn-danger btn-xs" })
+                    <span class="glyphicon glyphicon-user pink"></span> @(kisi.Ad + " " + kisi.Soyad)(<i>@(kisi.yas)</i>)
+
+                </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <div>
+                @Html.ActionLink("Yeni Adres", "Yeni", "Adres", null, new { @class = "btn btn-primary" })
+                </br></br>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    Adresler
+                </li>
+                @foreach (var adres in Model.Adresler)
+                {
+                <li class="list-group-item">
+                    @Html.ActionLink("Düzenle", "Duzenle", "Adres", new { adresid = adres.ID }, new { @class = "btn btn-warning btn-xs" })
+                    @Html.ActionLink("Sil", "Sil", "Adres", new { adresid = adres.ID }, new { @class = "btn btn-danger btn-xs" })
+                    <span class="glyphicon glyphicon-home red"></span>@adres.AdresTanim (<i>@(adres.Kisi.Ad + " " + adres.Kisi.Soyad) </i>)
+
+                </li>
+                }
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
