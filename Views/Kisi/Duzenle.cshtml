@@ -1,0 +1,40 @@
+﻿@model aspnet_mvc_ef_codefirst.Models.Kisiler
+@{
+    ViewBag.Title = "Duzenle";
+}
+
+<h2>Duzenle</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="input-group">
+        <span class="input-group-addon" id="txtad">Ad:</span>
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", placeholder = "Kisi Ad",
+       aria_describedby = "txtad" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="txtsoyad">Soyad:</span>
+        @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control",
+       placeholder = "Kisi Soyad", aria_describedby = "txtsoyad" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="txtyas">Yas:</span>
+        @Html.TextBoxFor(x => x.yas, new { @class = "form-control", placeholder = "Yas",
+       aria_describedby = "txtyas" })
+    </div>
+    <br />
+    <div class="input-group">
+        <input type="submit" value="kaydet" class="btn btn-success" />
+    </div>
+
+    <div class="input-group">
+        @if (ViewBag.Result != null)
+        {
+            <div class="alert alert-@ViewBag.Status" role="alert">@ViewBag.Result</div>}
+
+
+    </div>
+}
+
